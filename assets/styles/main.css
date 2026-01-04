@@ -1,0 +1,242 @@
+        :root {
+            --bg-color: #0a0a12;
+            --panel-bg: #141428;
+            --neon-blue: #6666ff;
+            --text-color: #ffffff;
+            --accent-color: #ffcc00;
+        }
+
+        * {
+            box-sizing: border-box;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            max-width: 600px;
+            background: var(--panel-bg);
+            border-bottom: 2px solid var(--neon-blue);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(102, 102, 255, 0.15);
+            z-index: 10;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+        }
+
+        #game-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 10px 10px 30px 10px;
+            position: relative;
+        }
+
+        #game-container {
+            position: relative;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            background: #000;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            border-radius: 6px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 18, 0.92);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            text-align: center;
+        }
+
+        .overlay h1 {
+            margin: 0 0 10px 0;
+            color: var(--accent-color);
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .overlay p {
+            color: #ccc;
+            font-size: 0.9rem;
+            max-width: 85%;
+            line-height: 1.4;
+        }
+
+        .key-hint {
+            color: #666;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--neon-blue), #4a4acc);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(102, 102, 255, 0.4);
+            transition: transform 0.1s;
+            text-transform: uppercase;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        #mobile-controls-area {
+            display: none;
+            width: 100%;
+            height: 140px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .d-pad-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            backdrop-filter: blur(2px);
+        }
+
+        .ctrl-btn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+        }
+
+        .ctrl-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .ctrl-btn:active {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .up {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .down {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .left {
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        .right {
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 768px) {
+            #mobile-controls-area {
+                display: flex;
+            }
+
+            .overlay h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        footer,
+        footer a {
+            width: 100%;
+            background: #050508;
+            border-top: 1px solid #222;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #e9e9e9;
+            flex-shrink: 0;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-color);
+            text-shadow: 0 0 5px rgba(102, 102, 255, 0.5);
+        }
+
+        footer span,
+        footer span:hover {
+            color: var(--neon-blue) !important;
+        }
+
+        .hidden {
+            display: none !important;
+        }

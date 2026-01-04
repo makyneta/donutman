@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <!-- Scripts -->
+    <script defer src="assets/scripts/main.js"></script>
+    <!-- Title & Favicon-->
+    <title>Bread-Man</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+</head>
+<body>
+
+    <header>
+        <div class="stat-box">
+            <div class="stat-label">Pontos</div>
+            <div class="stat-value" id="score-display">0</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Fase</div>
+            <div class="stat-value" id="level-display">1</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Vidas</div>
+            <div class="stat-value" id="lives-display">❤️❤️❤️</div>
+        </div>
+    </header>
+
+    <div id="game-wrapper">
+        <div id="game-container">
+            <canvas id="gameCanvas"></canvas>
+            
+            <div id="start-screen" class="overlay">
+                <h1>Bread-Man</h1>
+                <p>Objetivo: Pegue todos os <b>Donuts (🍩)</b> para passar de fase!</p>
+                <p class="key-hint">Controles PC: <b>W A S D</b><br>Mobile: Toque nos botões</p>
+                <button class="btn" onclick="game.startGame()">JOGAR</button>
+            </div>
+
+            <div id="game-over-screen" class="overlay hidden">
+                <h1 style="color: #ff4444;">GAME OVER</h1>
+                <p>Pontos: <span id="final-score" style="color:white; font-weight:bold;">0</span></p>
+                <button class="btn" onclick="game.resetGame()">TENTAR DE NOVO (Espaço)</button>
+            </div>
+        </div>
+
+        <div id="mobile-controls-area">
+            <div class="d-pad-container">
+                <div class="ctrl-btn up" ontouchstart="game.setDir(0, -1)" onmousedown="game.setDir(0, -1)">
+                    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+                </div>
+                <div class="ctrl-btn down" ontouchstart="game.setDir(0, 1)" onmousedown="game.setDir(0, 1)">
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+                </div>
+                <div class="ctrl-btn left" ontouchstart="game.setDir(-1, 0)" onmousedown="game.setDir(-1, 0)">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L10.83 12l4.58 4.59L14 18l-6-6 6-6z"/></svg>
+                </div>
+                <div class="ctrl-btn right" ontouchstart="game.setDir(1, 0)" onmousedown="game.setDir(1, 0)">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://makyneta.github.io">Copyright &copy; 2026 Makyneta Studios, Lda. Todos os direitos reservados.</a>
+    </footer>
+</body>
+</html>
